@@ -35,13 +35,13 @@ export default function Post() {
 
   return post ? (
     <div className='py-8'>
-        <Container>
+        <Container className='bg-white w-min rounded-xl px-8 py-8'>
             <div className='w-96 flex justify-center mb-4 relative border rounded-xl p-2'>
                 <img src={appwriteService.getFilePreview(post.featuredImage)} alt={post.title} className='rounded-xl w-40'
                 />
 
                 {isAuthor && (
-                    <div className='absolute right-6 top-6'>
+                    <div className='absoulte right-6 top-6'>
                         <Link to={`/edit-post/${post.$id}`}>
                             <Button bgColor="bg-green-500" className="mr-3">
                                 Edit

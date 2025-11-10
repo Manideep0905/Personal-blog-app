@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import appwriteService from "../appwrite/config.js"
 import {Container, PostCard} from '../components'
 
@@ -12,19 +12,37 @@ function AllPosts() {
         }
       })
 
-  return (
-    <div className='w-full py-8'>
-      <Container>
-        <div className='flex flex-wrap'> 
-          {posts.map((post) => (
-            <div key={post.$id} className='p-2 w-1/4'>
-              <PostCard {...post} />
+    if(posts.length === 0) {
+        return (
+            <div className='w-full h-[600px] py-8 text-center'>
+                <Container>
+                    <div className='flex flex-wrap'>
+                        <div className='p-2 w-full'>
+                                <h1 className='text-2xl font-bold'>
+                                    No posts available.
+                                </h1> 
+                        </div>
+                    </div>
+                </Container>
             </div>
-          ))}
-        </div>
-      </Container>
-    </div>
-  )
+        )
+    }
+    else {
+        return (
+            <div className='h-screen w-full py-8'>
+                <Container>
+                    <div className='flex flex-wrap'> 
+                        {posts.map((post) => (
+                            <div key={post.$id} className='p-2 w-1/4'>
+                                <PostCard {...post} />
+                            </div>
+                        ))}
+                    </div>
+                </Container>
+            </div>
+        )
+    }
+
 }
 
 export default AllPosts

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import appwriteService from '../appwrite/config.js'
 import { Container, PostCard } from '../components'
 import { useSelector } from 'react-redux'
@@ -18,17 +18,17 @@ function Home() {
 
     if(posts.length === 0) {
         return (
-            <div className='w-full py-8 mt-4 text-center'>
+            <div className='w-full h-[600px] py-8 text-center'>
                 <Container>
                     <div className='flex flex-wrap'>
                         <div className='p-2 w-full'>
                             {
                                 authStatus ? 
-                                <h1 className='text-2xl font-bold hover:text-gray-500'>
+                                <h1 className='text-2xl font-bold'>
                                     No posts available.
                                 </h1> 
                                 : 
-                                <h1 className='text-2xl font-bold hover:text-gray-500'>
+                                <h1 className='text-2xl font-bold'>
                                     Login to read posts.
                                 </h1>
                             }

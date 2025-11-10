@@ -12,6 +12,7 @@ import PostForm from "./post-form/PostForm.jsx";
 import PostCard from "./PostCard.jsx";
 import AuthLayout from "./AuthLayout.jsx";
 import Input from "./Input.jsx";
+import Spinner from "./Spinner.jsx";
 
 export {
     Header,
@@ -28,4 +29,5 @@ export {
     AuthLayout,
     Input,
     Select,
+    Spinner
 }
