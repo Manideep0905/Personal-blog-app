@@ -5,6 +5,7 @@ import {Button, Input, Logo} from './index.js'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth.js'
 import {useForm} from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 function Login() {
     const navigate = useNavigate()
@@ -24,6 +25,7 @@ function Login() {
 
             const session = await authService.login(data)
             if(session) {
+                toast.success("Login successful");
                 const userData = await authService.getCurrentUser()
                 if(userData) dispatch(authLogin(userData));
                 navigate("/")
