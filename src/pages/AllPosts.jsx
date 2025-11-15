@@ -1,16 +1,22 @@
 import {useState, useEffect} from 'react'
 import appwriteService from "../appwrite/config.js"
-import {Container, PostCard} from '../components'
+import {Container, PostCard, Spinner} from '../components/index.js'
 
 function AllPosts() {
 
     const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {}, [])
       appwriteService.getPosts([]).then((posts) => {
         if (posts) {
           setPosts(posts.documents)
         }
-      })
+      }).finally(() => setLoading(false));
+
+    if (loading) {
+        return <Spinner />
+    }
 
     if(posts.length === 0) {
         return (
